@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Para ti ❤️</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        /* INICIO CENTRADO */
+        #inicio {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        button {
+            padding: 15px 25px;
+            font-size: 18px;
+            margin: 10px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .si { background: #4CAF50; color: white; }
+        .no { background: #ff4d4d; color: white; }
+
+        /* PANTALLA SI */
+        #pantallaSi {
+            display: none;
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            color: white;
+        }
+
+        #fondoBlur {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: blur(10px) brightness(0.6);
+            z-index: -1;
+        }
+
+        #contenido {
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+            max-width: 700px;
+            margin: auto;
+            text-align: left;
+            padding: 20px;
+        }
+
+        #poema {
+            font-size: 20px;
+            line-height: 1.6;
+            white-space: pre-line;
+        }
+
+        /* IMAGEN CENTRADA */
+        #contenido img {
+            display: block;
+            margin: 25px auto;
+            width: 200px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        /* PANTALLA NO */
+        #pantallaNo {
+            display: none;
+            height: 100vh;
+            background: black;
+        }
+
+        #videoNo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- INICIO -->
+<div id="inicio">
+    <h1>¿Eres mi adorable hannita? ❤️</h1>
+    <button class="si" onclick="irSi()">Sí</button>
+    <button class="no" onclick="irNo()">No</button>
+</div>
+
+<!-- SI -->
+<div id="pantallaSi">
+    <img id="fondoBlur" src="imagen-si-1.jpg">
+
+    <div id="contenido">
+        <div id="poema">
+A pesar de la distancia
+Aunque los kilómetros nos separen,
+te siento aquí, latiendo en mi pecho.
+Cada noche miro el mismo cielo,
+y sé que tú también lo estás mirando.
+El tiempo se hace eterno sin tu risa,
+pero guardo tus palabras como tesoros.
+Te llevo en cada canción que escucho,
+en cada sueño donde apareces tú.
+A veces el silencio duele tanto,
+pero luego llega tu voz y me salva.
+Me recuerdas que el amor verdadero
+no entiende de mapas ni de fronteras.
+Un día ya no contaremos días,
+ni dormiremos con esta distancia fría.
+Te abrazaré tan fuerte que el tiempo
+se detendrá para pedirnos perdón.
+Mientras tanto, te amo desde lejos,
+con todo el alma, sin medida ni miedo.
+Eres mi persona favorita en este mundo,
+y ni mil kilómetros pueden cambiar eso.
+Te espero, mi amor.
+Siempre te espero.
+        </div>
+
+        <img src="imagen-si-2.jpg">
+    </div>
+
+    <audio id="audioSi" loop>
+        <source src="audio-si.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+<!-- NO -->
+<div id="pantallaNo">
+    <video id="videoNo" playsinline>
+        <source src="video-no.mp4" type="video/mp4">
+    </video>
+
+    <audio id="audioNo">
+        <source src="audio-no.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+<script>
+    function irSi() {
+        document.getElementById("inicio").style.display = "none";
+        document.getElementById("pantallaSi").style.display = "block";
+
+        let audio = document.getElementById("audioSi");
+
+        setTimeout(() => {
+            audio.play().catch(() => {});
+        }, 100);
+    }
+
+    function irNo() {
+        document.getElementById("inicio").style.display = "none";
+        document.getElementById("pantallaNo").style.display = "block";
+
+        let video = document.getElementById("videoNo");
+        let audio = document.getElementById("audioNo");
+
+        video.play();
+
+        setTimeout(() => {
+            audio.play().catch(() => {});
+        }, 100);
+    }
+</script>
+
+</body>
+</html>
